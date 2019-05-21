@@ -4614,8 +4614,6 @@ extern void pwm_loadBuffer_set();
 # 3 "src/drv_pwm.c"
 void pwm_init() {
 
-PWM3CONbits.EN = 1;
-
 PWM3CONbits.OE = 1;
 
 PWM3CONbits.POL = 0;
@@ -4642,6 +4640,8 @@ PWM3PR = 0x270F;
 PWM3OF = 0x00;
 
 PWM3TMR = 0x00;
+
+PWM3CONbits.EN = 1;
 }
 
 void pwm_dutyCycle_set(uint16_t duty) {

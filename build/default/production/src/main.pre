@@ -4650,7 +4650,7 @@ extern void tmr2_isr();
 extern void tmr2_set_handler(TMR2_InterruptHandler_t handler);
 
 # 49 "src/main.c"
-volatile bool on;
+volatile bool on = 1;
 
 volatile uint16_t adc_gather_value;
 
@@ -4660,6 +4660,22 @@ volatile uint16_t target_value = 0;
 
 volatile uint16_t current_value = 0;
 
+volatile uint16_t adc_filter_buf[10] = {0};
+
+
+void adc_gather_init() {
+uint16_t sum = 0;
+for(uint8_t i = 0; i < 10; i++) {
+sum += getADC();
+_delay((unsigned long)((20)*(16000000/4000000.0)));
+}
+adc_gather_value = sum / 10;
+if(adc_gather_value > 1010) {
+target_value = 10000;
+} else {
+target_value = (adc_gather_value - 10) * 10;
+}
+}
 
 void adc_gather() {
 uint8_t i,j;
@@ -4687,13 +4703,12 @@ adc_gather_value = sum / (10 - 2);
 void adc_filter() {
 uint16_t sum = 0;
 static uint8_t index = 0;
-static uint16_t value_buf[10] = {0};
 if(index >= 10) {
 index = 0;
 }
-value_buf[index++] = adc_gather_value;
+adc_filter_buf[index++] = adc_gather_value;
 for(unsigned int i = 0; i < 10; i++) {
-sum += value_buf[i];
+sum += adc_filter_buf[i];
 }
 adc_filter_value = sum / 10;
 }
@@ -4754,23 +4769,42 @@ tmr2_set_handler(pwm_run);
 
 void main(void) {
 
-INTCONbits.GIE = 1;
-
-INTCONbits.PEIE = 1;
-
-set_interrupt_handle();
-
 osc_init();
 
 gpio_init();
 
-tmr2_init();
-tmr2_start();
-tmr2_isr_enable();
-
 pwm_init();
 
 adc_init();
+
+tmr2_init();
+tmr2_start();
+
+_delay((unsigned long)((500)*(16000000/4000.0)));
+
+adc_gather_init();
+do {
+if(PIR1bits.TMR2IF) {
+PIR1bits.TMR2IF = 0;
+current_value += 10;
+pwm_dutyCycle_set(current_value);
+pwm_loadBuffer_set();
+}
+asm("clrwdt");
+}while(current_value < target_value);
+
+for(uint8_t i = 0; i < 10; i++) {
+adc_filter_buf[i] = adc_gather_value;
+}
+PIR1bits.TMR2IF = 0;
+
+set_interrupt_handle();
+
+INTCONbits.GIE = 1;
+
+INTCONbits.PEIE = 1;
+
+tmr2_isr_enable();
 
 while(1) {
 

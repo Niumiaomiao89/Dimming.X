@@ -4524,7 +4524,7 @@ TRISAbits.TRISA4 = 1;
 ANSELAbits.ANSA4 = 1;
 LATAbits.LATA4 = 0;
 
-TRISAbits.TRISA2 = 0;
 ANSELAbits.ANSA2 = 0;
-LATAbits.LATA2 = 1;
+LATAbits.LATA2 = 0;
+TRISAbits.TRISA2 = 0;
 }

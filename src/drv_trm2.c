@@ -1,4 +1,4 @@
-#include "../inc/drv_tmr2.h"
+ #include "../inc/drv_tmr2.h"
 
 TMR2_InterruptHandler_t tmr2_isr_handler;
 

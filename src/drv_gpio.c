@@ -7,7 +7,7 @@ void gpio_init() {
     ANSELAbits.ANSA4 = 1;
     LATAbits.LATA4 = 0;
     //RA2设置为数字输出
-    TRISAbits.TRISA2 = 0;
     ANSELAbits.ANSA2 = 0;
-    LATAbits.LATA2 = 1;
+    LATAbits.LATA2 = 0;
+    TRISAbits.TRISA2 = 0;
 }

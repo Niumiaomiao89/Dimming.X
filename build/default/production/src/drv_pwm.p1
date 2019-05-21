@@ -3471,51 +3471,51 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;drv_pwm.c: 3: void pwm_init() {
 [e :U _pwm_init ]
 [f ]
-[; ;drv_pwm.c: 5: PWM3CONbits.EN = 1;
+[; ;drv_pwm.c: 5: PWM3CONbits.OE = 1;
 "5
-[e = . . _PWM3CONbits 0 5 -> -> 1 `i `uc ]
-[; ;drv_pwm.c: 7: PWM3CONbits.OE = 1;
-"7
 [e = . . _PWM3CONbits 0 4 -> -> 1 `i `uc ]
-[; ;drv_pwm.c: 9: PWM3CONbits.POL = 0;
-"9
+[; ;drv_pwm.c: 7: PWM3CONbits.POL = 0;
+"7
 [e = . . _PWM3CONbits 0 2 -> -> 0 `i `uc ]
-[; ;drv_pwm.c: 11: PWM3CONbits.MODE = 0x00;
-"11
+[; ;drv_pwm.c: 9: PWM3CONbits.MODE = 0x00;
+"9
 [e = . . _PWM3CONbits 0 1 -> -> 0 `i `uc ]
-[; ;drv_pwm.c: 13: PWM3INTE = 0x00;
-"13
+[; ;drv_pwm.c: 11: PWM3INTE = 0x00;
+"11
 [e = _PWM3INTE -> -> 0 `i `uc ]
-[; ;drv_pwm.c: 15: PWM3INTF = 0x00;
-"15
+[; ;drv_pwm.c: 13: PWM3INTF = 0x00;
+"13
 [e = _PWM3INTF -> -> 0 `i `uc ]
-[; ;drv_pwm.c: 17: PWM3CLKCONbits.PS = 0x00;
-"17
+[; ;drv_pwm.c: 15: PWM3CLKCONbits.PS = 0x00;
+"15
 [e = . . _PWM3CLKCONbits 0 2 -> -> 0 `i `uc ]
-[; ;drv_pwm.c: 18: PWM3CLKCONbits.CS = 0x00;
-"18
+[; ;drv_pwm.c: 16: PWM3CLKCONbits.CS = 0x00;
+"16
 [e = . . _PWM3CLKCONbits 0 0 -> -> 0 `i `uc ]
-[; ;drv_pwm.c: 20: PWM3LDCONbits.LDA = 1;
-"20
+[; ;drv_pwm.c: 18: PWM3LDCONbits.LDA = 1;
+"18
 [e = . . _PWM3LDCONbits 0 3 -> -> 1 `i `uc ]
-[; ;drv_pwm.c: 22: PWM3OFCONbits.OFM = 0x00;
-"22
+[; ;drv_pwm.c: 20: PWM3OFCONbits.OFM = 0x00;
+"20
 [e = . . _PWM3OFCONbits 0 3 -> -> 0 `i `uc ]
-[; ;drv_pwm.c: 24: PWM3PH = 0x00;
-"24
+[; ;drv_pwm.c: 22: PWM3PH = 0x00;
+"22
 [e = _PWM3PH -> -> 0 `i `us ]
-[; ;drv_pwm.c: 26: PWM3DC = 0x00;
-"26
+[; ;drv_pwm.c: 24: PWM3DC = 0x00;
+"24
 [e = _PWM3DC -> -> 0 `i `us ]
-[; ;drv_pwm.c: 28: PWM3PR = 0x270F;
-"28
+[; ;drv_pwm.c: 26: PWM3PR = 0x270F;
+"26
 [e = _PWM3PR -> -> 9999 `i `us ]
-[; ;drv_pwm.c: 30: PWM3OF = 0x00;
-"30
+[; ;drv_pwm.c: 28: PWM3OF = 0x00;
+"28
 [e = _PWM3OF -> -> 0 `i `us ]
-[; ;drv_pwm.c: 32: PWM3TMR = 0x00;
-"32
+[; ;drv_pwm.c: 30: PWM3TMR = 0x00;
+"30
 [e = _PWM3TMR -> -> 0 `i `us ]
+[; ;drv_pwm.c: 32: PWM3CONbits.EN = 1;
+"32
+[e = . . _PWM3CONbits 0 5 -> -> 1 `i `uc ]
 [; ;drv_pwm.c: 33: }
 "33
 [e :UE 434 ]

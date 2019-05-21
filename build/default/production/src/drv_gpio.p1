@@ -3400,15 +3400,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;drv_gpio.c: 8: LATAbits.LATA4 = 0;
 "8
 [e = . . _LATAbits 0 4 -> -> 0 `i `uc ]
-[; ;drv_gpio.c: 10: TRISAbits.TRISA2 = 0;
+[; ;drv_gpio.c: 10: ANSELAbits.ANSA2 = 0;
 "10
-[e = . . _TRISAbits 0 2 -> -> 0 `i `uc ]
-[; ;drv_gpio.c: 11: ANSELAbits.ANSA2 = 0;
-"11
 [e = . . _ANSELAbits 0 2 -> -> 0 `i `uc ]
-[; ;drv_gpio.c: 12: LATAbits.LATA2 = 1;
+[; ;drv_gpio.c: 11: LATAbits.LATA2 = 0;
+"11
+[e = . . _LATAbits 0 2 -> -> 0 `i `uc ]
+[; ;drv_gpio.c: 12: TRISAbits.TRISA2 = 0;
 "12
-[e = . . _LATAbits 0 2 -> -> 1 `i `uc ]
+[e = . . _TRISAbits 0 2 -> -> 0 `i `uc ]
 [; ;drv_gpio.c: 13: }
 "13
 [e :UE 434 ]

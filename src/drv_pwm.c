@@ -1,8 +1,6 @@
 #include "../inc/drv_pwm.h"
 
 void pwm_init() {
-    //使能PWM模块
-    PWM3CONbits.EN = 1;
     //使能PWM输出引脚
     PWM3CONbits.OE = 1;
     //PWM高电平有效
@@ -30,6 +28,8 @@ void pwm_init() {
     PWM3OF = 0x00;
     //设置定时器计数器
     PWM3TMR = 0x00;
+    //使能PWM
+    PWM3CONbits.EN = 1;
 }
 
 void pwm_dutyCycle_set(uint16_t duty) {

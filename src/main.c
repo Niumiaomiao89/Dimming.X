@@ -46,7 +46,7 @@
 
 #define COUNT                           10
 
-volatile bool on;
+volatile bool on = true;
 //ADC采集值
 volatile uint16_t adc_gather_value;
 //ADC滤波值
@@ -55,7 +55,23 @@ volatile uint16_t adc_filter_value;
 volatile uint16_t target_value = 0;
 //PWM占空比当前值
 volatile uint16_t current_value = 0;
+//滤波数组
+volatile uint16_t adc_filter_buf[COUNT] = {0};
 
+//adc参数初始化
+void adc_gather_init() {
+    uint16_t sum = 0;
+    for(uint8_t i = 0; i < COUNT; i++) {
+        sum += getADC();
+        __delay_us(20);
+    }
+    adc_gather_value = sum / COUNT;
+    if(adc_gather_value > ADC_MAX_VALUE) {
+        target_value  = PWM_VALUE_MAX;
+    } else {
+        target_value = (adc_gather_value - ADC_PERIOD_VALUE) * 10;
+    }
+}
 //ADC采集
 void adc_gather() {
     uint8_t i,j;
@@ -83,13 +99,12 @@ void adc_gather() {
 void adc_filter() {
     uint16_t sum = 0;
     static uint8_t index = 0;
-    static uint16_t value_buf[COUNT] = {0};
     if(index >= COUNT) {
-            index = 0;
-        }
-    value_buf[index++] = adc_gather_value;
+        index = 0;
+    }
+    adc_filter_buf[index++] = adc_gather_value;
     for(unsigned int i = 0; i < COUNT; i++) {
-        sum += value_buf[i];
+        sum += adc_filter_buf[i];
     }
     adc_filter_value = sum / COUNT;
 }
@@ -149,25 +164,44 @@ void set_interrupt_handle() {
 }
 //主函数
 void main(void) {
-    //使能全局中断
-    global_interrupt_enable();
-    //使能外设中断
-    peripheral_interrupt_enable();
-    //初始化中断服务函数
-    set_interrupt_handle();
     //振荡器初始化
     osc_init();
     //管脚初始化
     gpio_init();
+    //PWM初始化
+    pwm_init();
+    //ADC初始化
+    adc_init();
     //TMR2初始化
     tmr2_init();
     tmr2_start();
+    //延时等待稳定
+    __delay_ms(500);
+    //adc采集值初始化
+    adc_gather_init();
+    do {
+        if(PIR1bits.TMR2IF) {
+            PIR1bits.TMR2IF = 0;
+            current_value += STEP;
+            pwm_dutyCycle_set(current_value);
+            pwm_loadBuffer_set();
+        }
+        CLRWDT();
+    }while(current_value < target_value);
+//    滤波数组初始化
+    for(uint8_t i = 0; i < COUNT; i++) {
+        adc_filter_buf[i] = adc_gather_value;
+    }
+    PIR1bits.TMR2IF = 0;
+    //中断初始化
+    set_interrupt_handle();
+    //使能全局中断
+    global_interrupt_enable();
+    //使能外设中断
+    peripheral_interrupt_enable();
+    //中断使能
     tmr2_isr_enable();
-    //PWM初始化
-    pwm_init();
-     //ADC初始化
-    adc_init();
-
+    
     while(1) {
         //看门狗
         CLRWDT();
