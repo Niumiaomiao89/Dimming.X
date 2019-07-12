@@ -46,7 +46,7 @@
 
 #define COUNT                           10
 
-volatile bool on = true;
+volatile bool on;
 //ADC采集值
 volatile uint16_t adc_gather_value;
 //ADC滤波值
@@ -60,16 +60,31 @@ volatile uint16_t adc_filter_buf[COUNT] = {0};
 
 //adc参数初始化
 void adc_gather_init() {
-    uint16_t sum = 0;
-    for(uint8_t i = 0; i < COUNT; i++) {
-        sum += getADC();
-        __delay_us(20);
+    uint8_t i,j;
+    uint16_t temp,sum = 0;
+    uint16_t value_buf[COUNT] = {0};
+    for(i = 0; i < COUNT; i++) {
+        value_buf[i] = getADC();
+        __delay_us(100);
     }
-    adc_gather_value = sum / COUNT;
-    if(adc_gather_value > ADC_MAX_VALUE) {
-        target_value  = PWM_VALUE_MAX;
+    for(j = 0; j < COUNT - 1; j++) {
+        for(i = 0;i < COUNT - j; i++) {
+            if(value_buf[i] > value_buf[i + 1]) {
+                temp = value_buf[i];   
+                value_buf[i] = value_buf[i + 1];
+                value_buf[i + 1] = temp;
+            }
+        }
+    }
+    for(i = 1; i < COUNT - 1; i++) {
+        sum += value_buf[i];
+    }
+    adc_gather_value = sum / (COUNT - 2);
+    if(adc_gather_value < 150) {
+        on = false;
+        adc_gather_value = 0;
     } else {
-        target_value = (adc_gather_value - ADC_PERIOD_VALUE) * 10;
+        on = true;
     }
 }
 //ADC采集
@@ -113,7 +128,7 @@ void led_update_state() {
     static uint8_t cnt_on = 0;
     static uint8_t cnt_off = 0;
     if(on) {
-        if(adc_filter_value < 20) {
+        if(adc_filter_value < 100) {
             cnt_off++;
             if(cnt_off >= 30) {
                 cnt_off = 0;
@@ -123,7 +138,7 @@ void led_update_state() {
             cnt_off = 0;
         }
     } else {
-        if(adc_filter_value > 20) {
+        if(adc_filter_value > 100) {
             cnt_on++;
             if(cnt_on >= 30) {
                 cnt_on = 0;
@@ -179,15 +194,6 @@ void main(void) {
     __delay_ms(500);
     //adc采集值初始化
     adc_gather_init();
-    do {
-        if(PIR1bits.TMR2IF) {
-            PIR1bits.TMR2IF = 0;
-            current_value += STEP;
-            pwm_dutyCycle_set(current_value);
-            pwm_loadBuffer_set();
-        }
-        CLRWDT();
-    }while(current_value < target_value);
 //    滤波数组初始化
     for(uint8_t i = 0; i < COUNT; i++) {
         adc_filter_buf[i] = adc_gather_value;

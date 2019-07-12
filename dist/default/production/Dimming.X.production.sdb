@@ -23,10 +23,8 @@
 [v _pwm_init pwm_init `(v  1 e 1 0 ]
 "35
 [v _pwm_dutyCycle_set pwm_dutyCycle_set `(v  1 e 1 0 ]
-[v i1_pwm_dutyCycle_set pwm_dutyCycle_set `(v  1 e 1 0 ]
 "39
 [v _pwm_loadBuffer_set pwm_loadBuffer_set `(v  1 e 1 0 ]
-[v i1_pwm_loadBuffer_set pwm_loadBuffer_set `(v  1 e 1 0 ]
 "5 G:\Work\Program\E027\Dimming.X\src/drv_trm2.c
 [v _tmr2_init tmr2_init `(v  1 e 1 0 ]
 "13
@@ -39,21 +37,21 @@
 [v _tmr2_set_handler tmr2_set_handler `(v  1 e 1 0 ]
 "62 G:\Work\Program\E027\Dimming.X\src/main.c
 [v _adc_gather_init adc_gather_init `(v  1 e 1 0 ]
-"76
+"91
 [v _adc_gather adc_gather `(v  1 e 1 0 ]
-"99
+"114
 [v _adc_filter adc_filter `(v  1 e 1 0 ]
-"112
+"127
 [v _led_update_state led_update_state `(v  1 e 1 0 ]
-"138
+"153
 [v _pwm_update_duty pwm_update_duty `(v  1 e 1 0 ]
-"150
+"165
 [v _pwm_run pwm_run `(v  1 e 1 0 ]
-"162
+"177
 [v _set_interrupt_handle set_interrupt_handle `(v  1 e 1 0 ]
-"166
+"181
 [v _main main `(v  1 e 1 0 ]
-"219
+"225
 [v _ISR ISR `II(v  1 e 1 0 ]
 [s S87 . 1 `uc 1 IOCIF 1 0 :1:0 
 `uc 1 INTF 1 0 :1:1 
@@ -85,7 +83,7 @@
 [v _PIR1bits PIR1bits `VES76  1 e 1 @17 ]
 "821
 [v _PR2 PR2 `VEuc  1 e 1 @27 ]
-[s S706 . 1 `uc 1 T2CKPS0 1 0 :1:0 
+[s S710 . 1 `uc 1 T2CKPS0 1 0 :1:0 
 `uc 1 T2CKPS1 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 T2OUTPS0 1 0 :1:3 
@@ -94,13 +92,13 @@
 `uc 1 T2OUTPS3 1 0 :1:6 
 ]
 "862
-[s S714 . 1 `uc 1 T2CKPS 1 0 :2:0 
+[s S718 . 1 `uc 1 T2CKPS 1 0 :2:0 
 `uc 1 TMR2ON 1 0 :1:2 
 `uc 1 T2OUTPS 1 0 :4:3 
 ]
-[u S718 . 1 `S706 1 . 1 0 `S714 1 . 1 0 ]
-[v _T2CONbits T2CONbits `VES718  1 e 1 @28 ]
-[s S303 . 1 `uc 1 TRISA0 1 0 :1:0 
+[u S722 . 1 `S710 1 . 1 0 `S718 1 . 1 0 ]
+[v _T2CONbits T2CONbits `VES722  1 e 1 @28 ]
+[s S307 . 1 `uc 1 TRISA0 1 0 :1:0 
 `uc 1 TRISA1 1 0 :1:1 
 `uc 1 TRISA2 1 0 :1:2 
 `uc 1 TRISA3 1 0 :1:3 
@@ -108,10 +106,10 @@
 `uc 1 TRISA5 1 0 :1:5 
 ]
 "930
-[s S310 . 1 `uc 1 TRISA 1 0 :6:0 
+[s S314 . 1 `uc 1 TRISA 1 0 :6:0 
 ]
-[u S312 . 1 `S303 1 . 1 0 `S310 1 . 1 0 ]
-[v _TRISAbits TRISAbits `VES312  1 e 1 @140 ]
+[u S316 . 1 `S307 1 . 1 0 `S314 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES316  1 e 1 @140 ]
 [s S123 . 1 `uc 1 TMR1IE 1 0 :1:0 
 `uc 1 TMR2IE 1 0 :1:1 
 `uc 1 . 1 0 :2:2 
@@ -123,7 +121,7 @@
 "986
 [u S131 . 1 `S123 1 . 1 0 ]
 [v _PIE1bits PIE1bits `VES131  1 e 1 @145 ]
-[s S242 . 1 `uc 1 TUN0 1 0 :1:0 
+[s S246 . 1 `uc 1 TUN0 1 0 :1:0 
 `uc 1 TUN1 1 0 :1:1 
 `uc 1 TUN2 1 0 :1:2 
 `uc 1 TUN3 1 0 :1:3 
@@ -131,11 +129,11 @@
 `uc 1 TUN5 1 0 :1:5 
 ]
 "1292
-[s S249 . 1 `uc 1 TUN 1 0 :6:0 
+[s S253 . 1 `uc 1 TUN 1 0 :6:0 
 ]
-[u S251 . 1 `S242 1 . 1 0 `S249 1 . 1 0 ]
-[v _OSCTUNEbits OSCTUNEbits `VES251  1 e 1 @152 ]
-[s S212 . 1 `uc 1 SCS0 1 0 :1:0 
+[u S255 . 1 `S246 1 . 1 0 `S253 1 . 1 0 ]
+[v _OSCTUNEbits OSCTUNEbits `VES255  1 e 1 @152 ]
+[s S216 . 1 `uc 1 SCS0 1 0 :1:0 
 `uc 1 SCS1 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 IRCF0 1 0 :1:3 
@@ -145,13 +143,13 @@
 `uc 1 SPLLEN 1 0 :1:7 
 ]
 "1354
-[s S221 . 1 `uc 1 SCS 1 0 :2:0 
+[s S225 . 1 `uc 1 SCS 1 0 :2:0 
 `uc 1 . 1 0 :1:2 
 `uc 1 IRCF 1 0 :4:3 
 ]
-[u S225 . 1 `S212 1 . 1 0 `S221 1 . 1 0 ]
-[v _OSCCONbits OSCCONbits `VES225  1 e 1 @153 ]
-[s S264 . 1 `uc 1 HFIOFS 1 0 :1:0 
+[u S229 . 1 `S216 1 . 1 0 `S225 1 . 1 0 ]
+[v _OSCCONbits OSCCONbits `VES229  1 e 1 @153 ]
+[s S268 . 1 `uc 1 HFIOFS 1 0 :1:0 
 `uc 1 LFIOFR 1 0 :1:1 
 `uc 1 MFIOFR 1 0 :1:2 
 `uc 1 HFIOFL 1 0 :1:3 
@@ -160,11 +158,11 @@
 `uc 1 PLLR 1 0 :1:6 
 ]
 "1420
-[u S272 . 1 `S264 1 . 1 0 ]
-[v _OSCSTATbits OSCSTATbits `VES272  1 e 1 @154 ]
+[u S276 . 1 `S268 1 . 1 0 ]
+[v _OSCSTATbits OSCSTATbits `VES276  1 e 1 @154 ]
 "1460
 [v _ADRES ADRES `VEus  1 e 2 @155 ]
-[s S385 . 1 `uc 1 ADON 1 0 :1:0 
+[s S389 . 1 `uc 1 ADON 1 0 :1:0 
 `uc 1 GO_nDONE 1 0 :1:1 
 `uc 1 CHS0 1 0 :1:2 
 `uc 1 CHS1 1 0 :1:3 
@@ -173,19 +171,19 @@
 `uc 1 CHS4 1 0 :1:6 
 ]
 "1536
-[s S393 . 1 `uc 1 . 1 0 :1:0 
+[s S397 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 ADGO 1 0 :1:1 
 `uc 1 CHS 1 0 :5:2 
 ]
-[s S397 . 1 `uc 1 . 1 0 :1:0 
+[s S401 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO 1 0 :1:1 
 ]
-[s S400 . 1 `uc 1 . 1 0 :1:0 
+[s S404 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 nDONE 1 0 :1:1 
 ]
-[u S403 . 1 `S385 1 . 1 0 `S393 1 . 1 0 `S397 1 . 1 0 `S400 1 . 1 0 ]
-[v _ADCON0bits ADCON0bits `VES403  1 e 1 @157 ]
-[s S427 . 1 `uc 1 ADPREF0 1 0 :1:0 
+[u S407 . 1 `S389 1 . 1 0 `S397 1 . 1 0 `S401 1 . 1 0 `S404 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES407  1 e 1 @157 ]
+[s S431 . 1 `uc 1 ADPREF0 1 0 :1:0 
 `uc 1 ADPREF1 1 0 :1:1 
 `uc 1 . 1 0 :2:2 
 `uc 1 ADCS0 1 0 :1:4 
@@ -194,13 +192,13 @@
 `uc 1 ADFM 1 0 :1:7 
 ]
 "1617
-[s S435 . 1 `uc 1 ADPREF 1 0 :2:0 
+[s S439 . 1 `uc 1 ADPREF 1 0 :2:0 
 `uc 1 . 1 0 :2:2 
 `uc 1 ADCS 1 0 :3:4 
 ]
-[u S439 . 1 `S427 1 . 1 0 `S435 1 . 1 0 ]
-[v _ADCON1bits ADCON1bits `VES439  1 e 1 @158 ]
-[s S345 . 1 `uc 1 LATA0 1 0 :1:0 
+[u S443 . 1 `S431 1 . 1 0 `S439 1 . 1 0 ]
+[v _ADCON1bits ADCON1bits `VES443  1 e 1 @158 ]
+[s S349 . 1 `uc 1 LATA0 1 0 :1:0 
 `uc 1 LATA1 1 0 :1:1 
 `uc 1 LATA2 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -208,21 +206,21 @@
 `uc 1 LATA5 1 0 :1:5 
 ]
 "1728
-[s S352 . 1 `uc 1 LATA 1 0 :6:0 
+[s S356 . 1 `uc 1 LATA 1 0 :6:0 
 ]
-[u S354 . 1 `S345 1 . 1 0 `S352 1 . 1 0 ]
-[v _LATAbits LATAbits `VES354  1 e 1 @268 ]
-[s S325 . 1 `uc 1 ANSA0 1 0 :1:0 
+[u S358 . 1 `S349 1 . 1 0 `S356 1 . 1 0 ]
+[v _LATAbits LATAbits `VES358  1 e 1 @268 ]
+[s S329 . 1 `uc 1 ANSA0 1 0 :1:0 
 `uc 1 ANSA1 1 0 :1:1 
 `uc 1 ANSA2 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
 `uc 1 ANSA4 1 0 :1:4 
 ]
 "2257
-[s S331 . 1 `uc 1 ANSELA 1 0 :5:0 
+[s S335 . 1 `uc 1 ANSELA 1 0 :5:0 
 ]
-[u S333 . 1 `S325 1 . 1 0 `S331 1 . 1 0 ]
-[v _ANSELAbits ANSELAbits `VES333  1 e 1 @396 ]
+[u S337 . 1 `S329 1 . 1 0 `S335 1 . 1 0 ]
+[v _ANSELAbits ANSELAbits `VES337  1 e 1 @396 ]
 "6531
 [v _PWM3PH PWM3PH `VEus  1 e 2 @3505 ]
 "6694
@@ -233,7 +231,7 @@
 [v _PWM3OF PWM3OF `VEus  1 e 2 @3511 ]
 "7183
 [v _PWM3TMR PWM3TMR `VEus  1 e 2 @3513 ]
-[s S489 . 1 `uc 1 . 1 0 :2:0 
+[s S493 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 MODE 1 0 :2:2 
 `uc 1 POL 1 0 :1:4 
 `uc 1 OUT 1 0 :1:5 
@@ -241,96 +239,96 @@
 `uc 1 EN 1 0 :1:7 
 ]
 "7379
-[s S496 . 1 `uc 1 . 1 0 :2:0 
+[s S500 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 PWM3MODE0 1 0 :1:2 
 `uc 1 PWM3MODE1 1 0 :1:3 
 ]
-[s S500 . 1 `uc 1 . 1 0 :2:0 
+[s S504 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 PWM3MODE 1 0 :2:2 
 `uc 1 PWM3POL 1 0 :1:4 
 `uc 1 PWM3OUT 1 0 :1:5 
 `uc 1 PWM3OE 1 0 :1:6 
 `uc 1 PWM3EN 1 0 :1:7 
 ]
-[s S507 . 1 `uc 1 . 1 0 :2:0 
+[s S511 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 MODE0 1 0 :1:2 
 `uc 1 MODE1 1 0 :1:3 
 ]
-[u S511 . 1 `S489 1 . 1 0 `S496 1 . 1 0 `S500 1 . 1 0 `S507 1 . 1 0 ]
-[v _PWM3CONbits PWM3CONbits `VES511  1 e 1 @3515 ]
+[u S515 . 1 `S493 1 . 1 0 `S500 1 . 1 0 `S504 1 . 1 0 `S511 1 . 1 0 ]
+[v _PWM3CONbits PWM3CONbits `VES515  1 e 1 @3515 ]
 "7454
 [v _PWM3INTE PWM3INTE `VEuc  1 e 1 @3516 ]
 "7580
 [v _PWM3INTF PWM3INTF `VEuc  1 e 1 @3517 ]
-[s S541 . 1 `uc 1 CS 1 0 :2:0 
+[s S545 . 1 `uc 1 CS 1 0 :2:0 
 `uc 1 . 1 0 :2:2 
 `uc 1 PS 1 0 :3:4 
 ]
 "7739
-[s S545 . 1 `uc 1 PWM3CS0 1 0 :1:0 
+[s S549 . 1 `uc 1 PWM3CS0 1 0 :1:0 
 `uc 1 PWM3CS1 1 0 :1:1 
 `uc 1 . 1 0 :2:2 
 `uc 1 PWM3PS0 1 0 :1:4 
 `uc 1 PWM3PS1 1 0 :1:5 
 `uc 1 PWM3PS2 1 0 :1:6 
 ]
-[s S552 . 1 `uc 1 PWM3CS 1 0 :3:0 
+[s S556 . 1 `uc 1 PWM3CS 1 0 :3:0 
 `uc 1 . 1 0 :1:3 
 `uc 1 PWM3PS 1 0 :3:4 
 ]
-[s S556 . 1 `uc 1 CS0 1 0 :1:0 
+[s S560 . 1 `uc 1 CS0 1 0 :1:0 
 `uc 1 CS1 1 0 :1:1 
 `uc 1 . 1 0 :2:2 
 `uc 1 PS0 1 0 :1:4 
 `uc 1 PS1 1 0 :1:5 
 `uc 1 PS2 1 0 :1:6 
 ]
-[u S563 . 1 `S541 1 . 1 0 `S545 1 . 1 0 `S552 1 . 1 0 `S556 1 . 1 0 ]
-[v _PWM3CLKCONbits PWM3CLKCONbits `VES563  1 e 1 @3518 ]
-[s S591 . 1 `uc 1 LDS 1 0 :2:0 
+[u S567 . 1 `S545 1 . 1 0 `S549 1 . 1 0 `S556 1 . 1 0 `S560 1 . 1 0 ]
+[v _PWM3CLKCONbits PWM3CLKCONbits `VES567  1 e 1 @3518 ]
+[s S595 . 1 `uc 1 LDS 1 0 :2:0 
 `uc 1 . 1 0 :4:2 
 `uc 1 LDT 1 0 :1:6 
 `uc 1 LDA 1 0 :1:7 
 ]
 "7841
-[s S596 . 1 `uc 1 PWM3LDS0 1 0 :1:0 
+[s S600 . 1 `uc 1 PWM3LDS0 1 0 :1:0 
 `uc 1 PWM3LDS1 1 0 :1:1 
 ]
-[s S599 . 1 `uc 1 PWM3LDS 1 0 :2:0 
+[s S603 . 1 `uc 1 PWM3LDS 1 0 :2:0 
 `uc 1 . 1 0 :4:2 
 `uc 1 PWM3LDM 1 0 :1:6 
 `uc 1 PWM3LD 1 0 :1:7 
 ]
-[s S604 . 1 `uc 1 LDS0 1 0 :1:0 
+[s S608 . 1 `uc 1 LDS0 1 0 :1:0 
 `uc 1 LDS1 1 0 :1:1 
 ]
-[u S607 . 1 `S591 1 . 1 0 `S596 1 . 1 0 `S599 1 . 1 0 `S604 1 . 1 0 ]
-[v _PWM3LDCONbits PWM3LDCONbits `VES607  1 e 1 @3519 ]
-[s S629 . 1 `uc 1 OFS 1 0 :2:0 
+[u S611 . 1 `S595 1 . 1 0 `S600 1 . 1 0 `S603 1 . 1 0 `S608 1 . 1 0 ]
+[v _PWM3LDCONbits PWM3LDCONbits `VES611  1 e 1 @3519 ]
+[s S633 . 1 `uc 1 OFS 1 0 :2:0 
 `uc 1 . 1 0 :2:2 
 `uc 1 OFO 1 0 :1:4 
 `uc 1 OFM 1 0 :2:5 
 ]
 "7929
-[s S634 . 1 `uc 1 PWM3OFS0 1 0 :1:0 
+[s S638 . 1 `uc 1 PWM3OFS0 1 0 :1:0 
 `uc 1 PWM3OFS1 1 0 :1:1 
 `uc 1 . 1 0 :3:2 
 `uc 1 PWM3OFM0 1 0 :1:5 
 `uc 1 PWM3OFM1 1 0 :1:6 
 ]
-[s S640 . 1 `uc 1 PWM3OFS 1 0 :2:0 
+[s S644 . 1 `uc 1 PWM3OFS 1 0 :2:0 
 `uc 1 . 1 0 :2:2 
 `uc 1 PWM3OFMC 1 0 :1:4 
 `uc 1 PWM3OFM 1 0 :2:5 
 ]
-[s S645 . 1 `uc 1 OFS0 1 0 :1:0 
+[s S649 . 1 `uc 1 OFS0 1 0 :1:0 
 `uc 1 OFS1 1 0 :1:1 
 `uc 1 . 1 0 :3:2 
 `uc 1 OFM0 1 0 :1:5 
 `uc 1 OFM1 1 0 :1:6 
 ]
-[u S651 . 1 `S629 1 . 1 0 `S634 1 . 1 0 `S640 1 . 1 0 `S645 1 . 1 0 ]
-[v _PWM3OFCONbits PWM3OFCONbits `VES651  1 e 1 @3520 ]
+[u S655 . 1 `S633 1 . 1 0 `S638 1 . 1 0 `S644 1 . 1 0 `S649 1 . 1 0 ]
+[v _PWM3OFCONbits PWM3OFCONbits `VES655  1 e 1 @3520 ]
 "3 G:\Work\Program\E027\Dimming.X\src/drv_trm2.c
 [v _tmr2_isr_handler tmr2_isr_handler `*.37(v  1 e 2 0 ]
 "49 G:\Work\Program\E027\Dimming.X\src/main.c
@@ -345,12 +343,12 @@
 [v _current_value current_value `VEui  1 e 2 0 ]
 "59
 [v _adc_filter_buf adc_filter_buf `VE[10]ui  1 e 20 0 ]
-"166
+"181
 [v _main main `(v  1 e 1 0 ]
 {
-"192
+"198
 [v main@i i `uc  1 a 1 36 ]
-"217
+"223
 } 0
 "13 G:\Work\Program\E027\Dimming.X\src/drv_trm2.c
 [v _tmr2_start tmr2_start `(v  1 e 1 0 ]
@@ -367,10 +365,10 @@
 {
 "11
 } 0
-"162 G:\Work\Program\E027\Dimming.X\src/main.c
+"177 G:\Work\Program\E027\Dimming.X\src/main.c
 [v _set_interrupt_handle set_interrupt_handle `(v  1 e 1 0 ]
 {
-"164
+"179
 } 0
 "36 G:\Work\Program\E027\Dimming.X\src/drv_trm2.c
 [v _tmr2_set_handler tmr2_set_handler `(v  1 e 1 0 ]
@@ -378,40 +376,39 @@
 [v tmr2_set_handler@handler handler `*.37(v  1 p 2 0 ]
 "38
 } 0
-"138 G:\Work\Program\E027\Dimming.X\src/main.c
+"153 G:\Work\Program\E027\Dimming.X\src/main.c
 [v _pwm_update_duty pwm_update_duty `(v  1 e 1 0 ]
 {
-"148
+"163
 } 0
-"39 G:\Work\Program\E027\Dimming.X\src/drv_pwm.c
-[v _pwm_loadBuffer_set pwm_loadBuffer_set `(v  1 e 1 0 ]
+"15 D:\Program Files\Microchip\xc8\v1.44\sources\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
 {
-"41
+"17
+[v ___wmul@product product `ui  1 a 2 4 ]
+"15
+[v ___wmul@multiplier multiplier `ui  1 p 2 0 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
+"53
 } 0
-"3
+"3 G:\Work\Program\E027\Dimming.X\src/drv_pwm.c
 [v _pwm_init pwm_init `(v  1 e 1 0 ]
 {
 "33
-} 0
-"35
-[v _pwm_dutyCycle_set pwm_dutyCycle_set `(v  1 e 1 0 ]
-{
-[v pwm_dutyCycle_set@duty duty `ui  1 p 2 0 ]
-"37
 } 0
 "3 G:\Work\Program\E027\Dimming.X\src/drv_osc.c
 [v _osc_init osc_init `(v  1 e 1 0 ]
 {
 "14
 } 0
-"112 G:\Work\Program\E027\Dimming.X\src/main.c
+"127 G:\Work\Program\E027\Dimming.X\src/main.c
 [v _led_update_state led_update_state `(v  1 e 1 0 ]
 {
-"113
+"128
 [v led_update_state@cnt_on cnt_on `uc  1 s 1 cnt_on ]
-"114
+"129
 [v led_update_state@cnt_off cnt_off `uc  1 s 1 cnt_off ]
-"136
+"151
 } 0
 "3 G:\Work\Program\E027\Dimming.X\src/drv_gpio.c
 [v _gpio_init gpio_init `(v  1 e 1 0 ]
@@ -426,52 +423,48 @@
 "62 G:\Work\Program\E027\Dimming.X\src/main.c
 [v _adc_gather_init adc_gather_init `(v  1 e 1 0 ]
 {
+"65
+[v adc_gather_init@value_buf value_buf `[10]ui  1 a 20 8 ]
 "64
-[v adc_gather_init@i i `uc  1 a 1 11 ]
+[v adc_gather_init@sum sum `ui  1 a 2 30 ]
+[v adc_gather_init@temp temp `ui  1 a 2 28 ]
 "63
-[v adc_gather_init@sum sum `ui  1 a 2 9 ]
-"74
+[v adc_gather_init@i i `uc  1 a 1 33 ]
+[v adc_gather_init@j j `uc  1 a 1 32 ]
+"64
+[v adc_gather_init@F3551 F3551 `[10]ui  1 s 20 F3551 ]
+"89
 } 0
-"15 D:\Program Files\Microchip\xc8\v1.44\sources\common\Umul16.c
-[v ___wmul __wmul `(ui  1 e 2 0 ]
-{
-"17
-[v ___wmul@product product `ui  1 a 2 4 ]
-"15
-[v ___wmul@multiplier multiplier `ui  1 p 2 0 ]
-[v ___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
-"53
-} 0
-"76 G:\Work\Program\E027\Dimming.X\src/main.c
+"91
 [v _adc_gather adc_gather `(v  1 e 1 0 ]
 {
-"79
+"94
 [v adc_gather@value_buf value_buf `[10]ui  1 a 20 8 ]
-"78
+"93
 [v adc_gather@sum sum `ui  1 a 2 30 ]
 [v adc_gather@temp temp `ui  1 a 2 28 ]
-"77
+"92
 [v adc_gather@i i `uc  1 a 1 33 ]
 [v adc_gather@j j `uc  1 a 1 32 ]
-"78
-[v adc_gather@F3555 F3555 `[10]ui  1 s 20 F3555 ]
-"97
+"93
+[v adc_gather@F3559 F3559 `[10]ui  1 s 20 F3559 ]
+"112
 } 0
 "16 G:\Work\Program\E027\Dimming.X\src/drv_adc.c
 [v _getADC getADC `(ui  1 e 2 0 ]
 {
 "21
 } 0
-"99 G:\Work\Program\E027\Dimming.X\src/main.c
+"114 G:\Work\Program\E027\Dimming.X\src/main.c
 [v _adc_filter adc_filter `(v  1 e 1 0 ]
 {
-"106
+"121
 [v adc_filter@i i `ui  1 a 2 12 ]
-"100
+"115
 [v adc_filter@sum sum `ui  1 a 2 10 ]
-"101
+"116
 [v adc_filter@index index `uc  1 s 1 index ]
-"110
+"125
 } 0
 "6 D:\Program Files\Microchip\xc8\v1.44\sources\common\lwdiv.c
 [v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
@@ -485,29 +478,29 @@
 [v ___lwdiv@dividend dividend `ui  1 p 2 2 ]
 "31
 } 0
-"219 G:\Work\Program\E027\Dimming.X\src/main.c
+"225 G:\Work\Program\E027\Dimming.X\src/main.c
 [v _ISR ISR `II(v  1 e 1 0 ]
 {
-"223
+"229
 } 0
 "29 G:\Work\Program\E027\Dimming.X\src/drv_trm2.c
 [v _tmr2_isr tmr2_isr `(v  1 e 1 0 ]
 {
 "34
 } 0
-"150 G:\Work\Program\E027\Dimming.X\src/main.c
+"165 G:\Work\Program\E027\Dimming.X\src/main.c
 [v _pwm_run pwm_run `(v  1 e 1 0 ]
 {
-"160
+"175
 } 0
 "39 G:\Work\Program\E027\Dimming.X\src/drv_pwm.c
-[v i1_pwm_loadBuffer_set pwm_loadBuffer_set `(v  1 e 1 0 ]
+[v _pwm_loadBuffer_set pwm_loadBuffer_set `(v  1 e 1 0 ]
 {
 "41
 } 0
 "35
-[v i1_pwm_dutyCycle_set pwm_dutyCycle_set `(v  1 e 1 0 ]
+[v _pwm_dutyCycle_set pwm_dutyCycle_set `(v  1 e 1 0 ]
 {
-[v i1pwm_dutyCycle_set@duty duty `ui  1 p 2 0 ]
+[v pwm_dutyCycle_set@duty duty `ui  1 p 2 0 ]
 "37
 } 0
